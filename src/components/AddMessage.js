@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const AddMessageComponent = props => {
@@ -10,7 +10,7 @@ const AddMessageComponent = props => {
         type="text"
         onKeyPress={(e) => {
           if (e.key === 'Enter') {
-            props.dispatch(input.value, 'Todo change name');
+            props.dispatch(input.value, 'Memeee');
             input.value = '';
           }
         }}
