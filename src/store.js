@@ -1,9 +1,18 @@
-import { createStore } from 'redux';
-import chat from './reducers';
-import {addUser} from "./actions";
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
-const store = createStore(chat);
+import reducers from './reducers';
+import setupSocket from "./sockets";
 
-store.dispatch(addUser('Me'));
+import handleNewMessage from './sagas';
+import userName from './utils/name';
+
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(reducers, applyMiddleware(sagaMiddleware));
+
+const socket = setupSocket(store.dispatch, userName);
+
+sagaMiddleware.run(handleNewMessage, {socket, userName});
 
 export default store;
