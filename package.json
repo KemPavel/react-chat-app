@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "dev": "concurrently \"npm start\" \"npm run start-server\"",
+    "dev": "concurrently \"npm start\" \"react-scripts start\"",
     "heroku-postbuild": "npm run build"
   }
 }
